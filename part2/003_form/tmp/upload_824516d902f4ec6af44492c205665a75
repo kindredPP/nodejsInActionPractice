@@ -1,0 +1,45 @@
+{
+  "resCode": 0,
+  "message": "SUCCESS",
+  "resData": [{
+    "id": 1,
+    "type": 1,
+    "property": "/projectManagement/projectSourceList",
+    "name": "项目管理",
+    "code": "projectManagement",
+    "icon": null,
+    "children": [{
+      "id": 2,
+      "type": 1,
+      "property": "insert, show",
+      "name": "项目源登记列表",
+      "code": "projectSourceList",
+      "icon": null,
+      "children": []
+    }, {
+      "id": 3,
+      "type": 4,
+      "property": "projectSourceAdd",
+      "name": "新增项目源",
+      "code": "projectSourceAdd",
+      "icon": null,
+      "children": []
+    }, {
+      "id": 4,
+      "type": 4,
+      "property": "projectSourceEdit",
+      "name": "编辑项目源",
+      "code": "projectSourceEdit",
+      "icon": null,
+      "children": []
+    }, {
+      "id": 5,
+      "type": 4,
+      "property": "projectSourceDetail",
+      "name": "项目源查看",
+      "code": "projectSourceDetail",
+      "icon": null,
+      "children": []
+    }]
+  }]
+}
