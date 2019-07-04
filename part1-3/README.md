@@ -14,3 +14,9 @@
     1. ./async 异步变成介绍 
     2. ./watcher 自定义监听文件夹类，将文件名转为小写
 3. 如何让异步逻辑顺序执行
+
+    流程控制：串行和并行
+    1. 如何使用串行化流程控制
+    2. 如何实现串行化流程flowControl/random_story
+    3. 如何实现并行化流程控制wflowControl/word_count
+    4. 如何使用第三方模块做流程控制 Nimble、Step、Seq
