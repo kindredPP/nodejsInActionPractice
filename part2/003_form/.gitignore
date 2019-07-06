@@ -1,3 +1,4 @@
-node_modules/
+key.pem
+key-cert.pem
 npm-debug.log*
 package-lock.json

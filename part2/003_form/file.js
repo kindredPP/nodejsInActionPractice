@@ -6,7 +6,7 @@ var options = {
   key: fs.readFileSync('./key.pem'),
   cert: fs.readFileSync('./key-cert.pem')
 }
-
+// https
 var server = https.createServer(options, (req, res) => {
   switch (req.method) {
     case 'GET':

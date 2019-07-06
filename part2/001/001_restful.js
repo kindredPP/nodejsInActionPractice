@@ -1,3 +1,6 @@
+// 增curl -d 'buy node in action2' http://localhost:3000 
+// 查curl http://localhost:3000
+// 删curl -v -X DELETE http://localhost:3000/1 
 var http = require('http')
 var url = require('url')
 var items = []
