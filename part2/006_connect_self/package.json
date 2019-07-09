@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "connect": "^3.6.6"
+    "connect": "^3.6.6",
+    "cookie-parser": "^1.4.4"
   },
   "devDependencies": {},
   "scripts": {
