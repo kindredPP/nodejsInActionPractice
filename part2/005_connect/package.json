@@ -1,0 +1,15 @@
+{
+  "name": "005_connect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1_connect_min.js",
+  "dependencies": {},
+  "devDependencies": {
+    "connect": "^3.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

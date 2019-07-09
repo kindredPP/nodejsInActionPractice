@@ -60,6 +60,6 @@ function errorPage(err, req, res, next) {
 }
 var app = connect()
 .use(hello)
-.use('/api', api)
+.use('/api', api) // 挂载
 .use(errorPage)
 .listen(3000)
