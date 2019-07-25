@@ -8,6 +8,7 @@ var session = require('express-session')
 var indexRouter = require('./routes/index');
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login')
+var entriesRouter = require('./routes/entries')
 // 全局消息提示中间件
 var messages = require('./lib/messages')
 var user = require('./lib/middleware/user')
@@ -34,12 +35,16 @@ app.use(session({
 app.use(user)
 app.use(messages)
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.get('/register', registerRouter.form);
 app.post('/register', registerRouter.submit);
 app.get('/login', loginRouter.form)
 app.post('/login', loginRouter.submit)
 app.get('/logout', loginRouter.logout)
+app.get('/', entriesRouter.list)
+app.get('/post', entriesRouter.form)
+app.post('/post', entriesRouter.submit)
+
 
 
 // catch 404 and forward to error handler
