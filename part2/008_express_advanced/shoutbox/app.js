@@ -7,8 +7,10 @@ var session = require('express-session')
 
 var indexRouter = require('./routes/index');
 var registerRouter = require('./routes/register');
+var loginRouter = require('./routes/login')
 // 全局消息提示中间件
 var messages = require('./lib/messages')
+var user = require('./lib/middleware/user')
 
 var app = express();
 
@@ -29,11 +31,16 @@ app.use(session({
       maxAge : 1000 * 60 * 3, // 设置 session 的有效时间，单位毫秒
   },
 }))
+app.use(user)
 app.use(messages)
 
 app.use('/', indexRouter);
 app.get('/register', registerRouter.form);
 app.post('/register', registerRouter.submit);
+app.get('/login', loginRouter.form)
+app.post('/login', loginRouter.submit)
+app.get('/logout', loginRouter.logout)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

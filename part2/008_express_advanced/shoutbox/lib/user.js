@@ -29,6 +29,7 @@ User.prototype.save = function(fn) {
 User.prototype.update = function(fn) {
   var user = this
   const id = user.id
+  // ？？没明白这句
   db.set('user:id:' + user.name, id, function(err) {
     if (err) return fn(err)
     let updateUser = {} 
