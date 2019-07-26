@@ -1,5 +1,8 @@
 const User = require('../user')
 module.exports = function(req, res, next) {
+  if (req.remoteUser) {
+    res.locals.user = req.remoteUser
+  }
   const uid = req.session.uid
   if (!uid) return next()
   User.get(uid, function(err, user) {

@@ -16,6 +16,8 @@ var validate = require('./lib/middleware/validate')
 var page = require('./lib/middleware/page')
 var Entry = require('./lib/entry')
 
+var api = require('./routes/api')
+
 var app = express();
 
 // view engine setup
@@ -35,6 +37,14 @@ app.use(session({
       maxAge : 1000 * 60 * 3, // 设置 session 的有效时间，单位毫秒
   },
 }))
+
+// app.use('/api', api.auth) // todo express-basicauth
+app.use('/api/user/:id', api.user) // curl http://localhost:3000/api/user/2 -v  
+// curl -d "entry[title]=Hohoho&entry[body]=Santa loves you" -v http://localhost:3000/api/entry 
+// 没有验证 所有没有username
+app.post('/api/entry', entriesRouter.submit) 
+//
+app.get('/api/entries/:page?', page(Entry.count, 5), api.entries)
 app.use(user)
 app.use(messages)
 

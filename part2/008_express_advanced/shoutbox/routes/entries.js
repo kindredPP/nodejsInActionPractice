@@ -13,17 +13,22 @@ exports.form = function(req, res) {
   res.render('post', {title: 'Post' })
 }
 exports.submit = function(req, res) {
+  console.log(1111)
   var data = req.body
+  console.log(data)
   var title = data.entry.title // ['entry[title]']
   var body = data.entry.body // ['entry[body]']
-
   var entry = new Entry({
-    username: res.locals.user.name,
+    username: res.locals.user && res.locals.user.name,
     title,
     body
   })
   entry.save(function(err) {
     if (err) return next(err)
-    res.redirect('/')
+    if (req.remoteUser) {
+      res.json({message: 'Entry added.'})
+    } else {
+      res.redirect('/')
+    }
   })
 }
