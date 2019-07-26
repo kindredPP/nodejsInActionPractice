@@ -12,6 +12,9 @@ var entriesRouter = require('./routes/entries')
 // 全局消息提示中间件
 var messages = require('./lib/messages')
 var user = require('./lib/middleware/user')
+var validate = require('./lib/middleware/validate')
+var page = require('./lib/middleware/page')
+var Entry = require('./lib/entry')
 
 var app = express();
 
@@ -21,7 +24,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true })); // 打开解析 user[name] 可解析为 user.name
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
@@ -41,10 +44,13 @@ app.post('/register', registerRouter.submit);
 app.get('/login', loginRouter.form)
 app.post('/login', loginRouter.submit)
 app.get('/logout', loginRouter.logout)
-app.get('/', entriesRouter.list)
 app.get('/post', entriesRouter.form)
-app.post('/post', entriesRouter.submit)
-
+app.post('/post',
+ validate.required('entry[title]'),
+ validate.lengthAbove('entry[title]', 4),
+ entriesRouter.submit)
+ // 放到所有路由最后
+ app.get('/:page?', page(Entry.count, 5), entriesRouter.list)
 
 
 // catch 404 and forward to error handler

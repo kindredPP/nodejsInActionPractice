@@ -1,0 +1,13 @@
+<div id='paper'>
+  <% if (page.count > 1) { %><!-- 只有一页时不显示分页控件 -->
+    <% if (page.number) { %> <!-- 如果没在第一页，显示上一页链接 -->
+      <a id='prev' href='/<%= page.number %>'>Prev</a>
+    <% } %>
+    <% if (page.number < page.count - 1) { %><!-- 如果没在最后一页，显示下一页链接 -->
+      <% if (page.number) { %>
+        &nbsp;&nbsp;
+      <% } %>
+      <a id='next' href='/<%= page.number + 2 %>'>Next</a>
+    <% } %>
+  <% } %>
+</div>

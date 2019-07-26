@@ -5,8 +5,8 @@ exports.form = function(req, res) {
 }
 exports.submit = function(req, res) {
   var data = req.body;
-  var username = data['user[name]']
-  var userpass = data['user[pass]']
+  var username = data.user.name; //['user[name]']
+  var userpass = data.user.pass; //['user[pass]']
   console.log(req.body)
   User.getByName(username, function(err, user) {
     if (err) return next(err)

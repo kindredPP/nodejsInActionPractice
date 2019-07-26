@@ -1,6 +1,7 @@
 var Entry = require('../lib/entry')
 exports.list = function(req, res, next) {
-  Entry.getRange(0, -1, function(err, entries) {
+  var page = req.page
+  Entry.getRange(page.from, page.to, function(err, entries) {
     if (err) return next(err)
     res.render('entries', {
       title: 'Entries',
@@ -13,8 +14,8 @@ exports.form = function(req, res) {
 }
 exports.submit = function(req, res) {
   var data = req.body
-  var title = data['entry[title]']
-  var body = data['entry[body]']
+  var title = data.entry.title // ['entry[title]']
+  var body = data.entry.body // ['entry[body]']
 
   var entry = new Entry({
     username: res.locals.user.name,
